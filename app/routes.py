@@ -6,12 +6,11 @@ from app.models import model, formopener
 @app.route('/index')
 def index():
     return render_template("index.html")
-@app.route('/search', methods = ['GET','POST'])    
-def search():
+
+
+@app.route('/contacts', methods = ['GET','POST'])    
+def contacts():
     if request.method == "GET":
-        return "Please fill out the form in the index"
+        return "Please fill out the contacts section"
     else:
-        return "Find the cheapest textbook"
-    
-
-
+        return "Thanks for filling out the form! You will be helped shortly."
