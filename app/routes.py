@@ -28,14 +28,24 @@ email = ""
 
 
 def userEmail():
-     if request.method == 'GET':
-         return "Sorry, please enter your e-mail adress."
-     else:
-         formData = dict(request.form)
-         global email
-         email = formData["userEmail"]
+    if request.method == 'GET':
+        return "Sorry, please enter your e-mail adress."
+    else:
+        formData = dict(request.form)
+        global email
+        email = formData["userEmail"]
+        print(converted_price)
+        if (converted_price < 4.00):
+            print(email)
+            scraper.send_mail(email)
+            print("email")
+            return render_template("url.html", txtbkLink = txtbkLink, title = title, converted_price = converted_price)
+        else:
+            return render_template("url.html", txtbkLink = txtbkLink, title = title, converted_price = converted_price)
+            # return "The textbook was more than $4.00"
         #  send_mail(email) 
-         return render_template("email.html",email = email)
+        
+        
 @app.route('/url', methods = ['GET', 'POST'])
 def txtbkLink():
     if request.method == 'GET':
@@ -44,11 +54,8 @@ def txtbkLink():
         global title, converted_price, email
         formData = dict(request.form)
         txtbkLink = formData["txtbkLink"]
-        if (converted_price < 4.00):
-            return "The textbook was more than $4.00"
-        else:
-            scraper.send_mail(email)
-            return render_template("url.html", txtbkLink = txtbkLink, title = title, converted_price = converted_price)
+        print(type(converted_price))
+        return render_template("url.html", txtbkLink = txtbkLink, title = title, converted_price = converted_price)
 
 
 # @app.route('/url', methods = ['GET','POST'])

@@ -17,7 +17,7 @@ def send_mail(email):
     server.login('farhan.mashud.174@gmail.com', 'tcvwxvbphbqktvue')
     
     subject = "Price fell down!"
-    body = "Check the ebay link https://www.ebay.com/itm/Schaums-Outline-of-College-Physics-11th-Edition-Schaums-Outlines/264299992135?epid=6012772980&_trkparms=ispr%3D1&hash=item3d8981d447:g:opUAAOSwUlRbsw8Z&enc=AQAEAAAB4BPxNw%2BVj6nta7CKEs3N0qXyMKaPqSWFYFjtddM%2FSpeQ0GWvoOsxMeQc%2BuUXNqBTv%2Bcv2JrK3HPONqpcDZH3gVf9CHPIfuiCSsoUHXd1E7LXvHS%2BHSYJHJ7t6qe%2BoULzgnuTdkcuZwajNl3Ta9IktY9u0V33FW67wrO5Lfh0MVwPDh%2Bow2pWRAqJTg5wDDPv%2BJaSH1YCZ%2BHjJMj%2Fd9Y9wbUGhrWPVKxfqZTa%2FRJsZKsnN4tAQtzMm15E3Dsykm6k7sFTwWwsKc%2FL2Fyk6qPU9l96egZFHVkyd%2F3orSlPcc2Q8r1bq4oUwDRAcj4Sopv1Uu6y%2F3fWurOMY7algGktONMru9q%2BazjXtLY4QleruDuC1AY9zQvh7As7RGbgFUaq8D23Rxyar1BiE78n9Iv29KY%2BxKG%2BXHPABNDkiooJwyHtE0yRFOi31VqSjMLsY55E%2FKMPSTKH1wDxgb24wNlDiPO5sXZ%2BtD9oqyUYjJoPv%2By1irEF4%2BJtJIwLjY%2B2NRTmeJO48QbZMpbSQxKss7VBrxSivVfVKBddWXsdtuAnSPYj63CU93e%2F5T6O1IZax6ZwKFsi5B5RAnSe%2FN%2FIPIS%2Fe9mAnUTVf%2FzKF2Cotym%2Bby1oP3%2BzH3MutILOnPqS4jxxyg%3D%3D&checksum=2642999921353054c6f79ae14a8db386b6d1bd3dafbc"
+    body = "Check the ebay link  "
     
     msg = "Subject: {}\n\n{}".format(subject, body)
     
