@@ -52,13 +52,13 @@ def checkPrice(txtbkLink, email):
     # converted_price = float(converted_price)
     
     if (converted_price < 4.00):
-        send_mail(email)
-    
-    print(title.strip())
-    print(converted_price)
+        # send_mail(email)
+        print(converted_price)    
+    # (title.strip())
+    # print(converted_price)
     # return (title.strip(), converted_price)
 
-    # return(title.strip(), converted_price)
+    return(title.strip(), converted_price)
 
 def textbook():
     global title, price, converted_price

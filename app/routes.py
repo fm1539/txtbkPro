@@ -45,9 +45,6 @@ def txtbkLink():
         formData = dict(request.form)
         txtbkLink = formData["txtbkLink"]
         title, converted_price = scraper.checkPrice(txtbkLink, email)
-        scraper.checkPrice(txtbkLink, email)
-        print(title.strip())
-        print(converted_price)
         return render_template("url.html", txtbkLink = txtbkLink, title = title, converted_price = converted_price)
 
 
