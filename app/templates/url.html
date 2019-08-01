@@ -5,8 +5,12 @@
     </head>
     <body>
         
-        <h3>{{title}} is {{converted_price}}. </h3>
-        
-
+        <h3>{{title}} is $ {{converted_price}}.</h3>
+    
+    <form method = "post", action = "/email">
+        <input type="text" name="userEmail" placeholder = "Please type email here" />
+        <input type="submit" value="Submit"/>
+    </form>    
+        <p>Please input your e-mail in the form above. A notification will be sent once the price drops. Happy Saving!</p>
     </body>
 </html>

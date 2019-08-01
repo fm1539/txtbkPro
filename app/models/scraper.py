@@ -30,7 +30,7 @@ def send_mail(email):
     return "EMAIL SENT!" and server.quit()
     
 
-def checkPrice(txtbkLink):
+def checkPrice(txtbkLink, email):
     
     headers = {'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/75.0.3770.142 Safari/537.36'}
     page = requests.get(txtbkLink, headers=headers)
@@ -51,15 +51,14 @@ def checkPrice(txtbkLink):
     converted_price = float(price[10:14])
     # converted_price = float(converted_price)
     
-    # if (converted_price < 4.00):
-        # send_mail()
+    if (converted_price < 4.00):
+        send_mail(email)
     
-    # (title.strip())
-    # print(converted_price)
+    print(title.strip())
+    print(converted_price)
     # return (title.strip(), converted_price)
 
-    return(title.strip(), converted_price)
-@app.route('/')
+    # return(title.strip(), converted_price)
 
 def textbook():
     global title, price, converted_price

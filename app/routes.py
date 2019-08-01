@@ -17,34 +17,39 @@ def index():
 #     else:
 #         return "Thanks for filling out the form! You will be helped shortly."
         
-@app.route('/url', methods = ['GET', 'POST'])
-def txtbkLink():
-    if request.method == 'GET':
-        return "Sorry, please enter a valid URL on the home page."
-    else:
-        global title, converted_price
-        formData = dict(request.form)
-        txtbkLink = formData["txtbkLink"]
-        title, converted_price = scraper.checkPrice(txtbkLink)
-        scraper.checkPrice(txtbkLink)
-        print(title.strip())
-        print(converted_price)
-        return render_template("url.html", txtbkLink = txtbkLink, title = title, converted_price = converted_price)
     
     # print(title)
     # print(converted_price)
     # converted_price = str(converted_price)
     # return render_template("url.html", title = title, converted_price = converted_price)
-    
-# @app.route('/email', methods = ['GET', 'POST']) 
-# def userEmail():
-#     if request.method == 'GET':
-#         return "Sorry, please enter your e-mail adress."
-#     else:
-#         formData = dict(request.form)
-#         userEmail = formData["userEmail"]
-#         send_mail(userEmail) 
-#         return render_template("email.html", userEmail = userEmail)
+
+email = ""
+@app.route('/email', methods = ['GET', 'POST']) 
+
+
+def userEmail():
+     if request.method == 'GET':
+         return "Sorry, please enter your e-mail adress."
+     else:
+         formData = dict(request.form)
+         global email
+         email = formData["userEmail"]
+         send_mail(email) 
+         return render_template("email.html",email = email)
+@app.route('/url', methods = ['GET', 'POST'])
+def txtbkLink():
+    if request.method == 'GET':
+        return "Sorry, please enter a valid URL on the home page."
+    else:
+        global title, converted_price, email
+        formData = dict(request.form)
+        txtbkLink = formData["txtbkLink"]
+        title, converted_price = scraper.checkPrice(txtbkLink, email)
+        scraper.checkPrice(txtbkLink, email)
+        print(title.strip())
+        print(converted_price)
+        return render_template("url.html", txtbkLink = txtbkLink, title = title, converted_price = converted_price)
+
 
 # @app.route('/url', methods = ['GET','POST'])
 # def userTxtbkLink():
