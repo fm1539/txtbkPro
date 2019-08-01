@@ -51,9 +51,6 @@ def checkPrice(txtbkLink, email):
     converted_price = float(price[10:14])
     # converted_price = float(converted_price)
     
-    if (converted_price < 4.00):
-        # send_mail(email)
-        print(converted_price)    
     # (title.strip())
     # print(converted_price)
     # return (title.strip(), converted_price)

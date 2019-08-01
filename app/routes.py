@@ -34,7 +34,7 @@ def userEmail():
          formData = dict(request.form)
          global email
          email = formData["userEmail"]
-         send_mail(email) 
+        #  send_mail(email) 
          return render_template("email.html",email = email)
 @app.route('/url', methods = ['GET', 'POST'])
 def txtbkLink():
@@ -44,8 +44,11 @@ def txtbkLink():
         global title, converted_price, email
         formData = dict(request.form)
         txtbkLink = formData["txtbkLink"]
-        title, converted_price = scraper.checkPrice(txtbkLink, email)
-        return render_template("url.html", txtbkLink = txtbkLink, title = title, converted_price = converted_price)
+        if (converted_price < 4.00):
+            return "The textbook was more than $4.00"
+        else:
+            scraper.send_mail(email)
+            return render_template("url.html", txtbkLink = txtbkLink, title = title, converted_price = converted_price)
 
 
 # @app.route('/url', methods = ['GET','POST'])
