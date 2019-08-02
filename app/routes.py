@@ -3,8 +3,9 @@ from app.models.scraper import send_mail
 from flask import render_template, request
 from app.models import scraper, formopener
 
-title = ""
-converted_price = 0.00
+
+title = ''
+# converted_price = scraper.converted_price
 @app.route('/')
 @app.route('/index')
 def index():
@@ -24,24 +25,25 @@ def index():
     # return render_template("url.html", title = title, converted_price = converted_price)
 
 email = ""
-@app.route('/email', methods = ['GET', 'POST']) 
+# @app.route('/email', methods = ['GET', 'POST']) 
 
 
-def userEmail():
-    if request.method == 'GET':
-        return "Sorry, please enter your e-mail adress."
-    else:
-        formData = dict(request.form)
-        global email
-        email = formData["userEmail"]
-        print(converted_price)
-        if (converted_price < 4.00):
-            print(email)
-            scraper.send_mail(email)
-            print("email")
-            return render_template("url.html", txtbkLink = txtbkLink, title = title, converted_price = converted_price)
-        else:
-            return render_template("url.html", txtbkLink = txtbkLink, title = title, converted_price = converted_price)
+# def userEmail():
+#     if request.method == 'GET':
+#         return "Sorry, please enter your e-mail adress."
+#     else:
+#         formData = dict(request.form)
+#         global email
+#         title, converted_price = scraper.checkPrice(txtbkLink)
+#         email = formData["userEmail"]
+#         print(converted_price)
+#         if (converted_price < 4.00):
+#             # print(email)
+#             scraper.send_mail(email)
+#             # print("email")
+#             return render_template("url.html", txtbkLink = txtbkLink, title = title, converted_price = converted_price)
+#         else:
+#             return "Your book is over $4.00"
             # return "The textbook was more than $4.00"
         #  send_mail(email) 
         
@@ -53,8 +55,21 @@ def txtbkLink():
     else:
         global title, converted_price, email
         formData = dict(request.form)
+        
         txtbkLink = formData["txtbkLink"]
-        print(type(converted_price))
+        email = formData["userEmail"]
+        # link = formData["txtbkLink"]
+        title, converted_price = scraper.checkPrice(txtbkLink, email)
+        # scraper.checkPrice(txtbkLink, 'farhan.mashud.174@gmail.com')
+        # print(type(converted_price))
+        if (converted_price < 4.00):
+            # print(email)
+            scraper.send_mail(email)
+            # print("email")
+            # return render_template("url.html", txtbkLink = txtbkLink, title = title, converted_price = converted_price)
+        #  :
+            # return "The textbook was more than $4.00"
+        
         return render_template("url.html", txtbkLink = txtbkLink, title = title, converted_price = converted_price)
 
 

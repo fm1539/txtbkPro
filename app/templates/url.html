@@ -2,15 +2,23 @@
 <html>
     <head>
         <title>Textbook Search Results</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<link rel="stylesheet" href="/static/assets/css/main.css" />
     </head>
     <body>
         
         <h3><center>{{title}} is ${{converted_price}}.</center></h3>
+        
+        {% if converted_price < 4.00 %}
+        <h1>Email has been sent to {{email}}</h1>
+
+        {% endif%}
     
-    <form method = "post", action = "/email">
-        <input type="text" name="userEmail" placeholder = "Please type email here" />
-        <input type="submit" value="Submit"/>
-    </form>    
-        <p>Please input your e-mail in the form above. A notification will be sent once the price drops. Happy Saving!</p>
+    <!--<form method = "post", action = "/email">-->
+    <!--    <input type="text" name="userEmail" placeholder = "Please type email here" />-->
+    <!--    <center><input type="submit" value="Submit"/></center>-->
+    <!--</form>    -->
+    <!--    <p>Please input your e-mail in the form above. A notification will be sent once the price drops. Happy Saving!</p>-->
     </body>
 </html>
