@@ -8,10 +8,16 @@
     </head>
     <body>
         
-        <h3><center>{{title}} is ${{converted_price}}.</center></h3>
+        <h2><center>Search Results</center></h2>
+        <br>
+        <br>
+        <br>
+        <div class = "container">>
+            <h1><center>{{title}} is ${{converted_price}}</center></h1>
+        </div
         
-        {% if converted_price < 4.00 %}
-        <h1>Email has been sent to {{email}}</h1>
+        {% if converted_price < 6.00 %}
+        <h1>Email has been sent to your email. Once the price falls below $6.00, you will be notified of the price drop.</h1>
 
         {% endif%}
     

@@ -1,23 +1,43 @@
 from app import app
 from app.models.scraper import send_mail
-from flask import render_template, request
+from flask import Flask, render_template, request, flash
 from app.models import scraper, formopener
+from app.forms import ContactForm
+from flask_mail import Message, Mail
+mail = Mail()
+app.config["MAIL_SERVER"] = "smtp.gmail.com"
+app.config["MAIL_PORT"] = 465
+app.config["MAIL_USE_SSL"] = True
+app.config["MAIL_USERNAME"] = 'textbookproapp@gmail.com'
+app.config["MAIL_PASSWORD"] = 'xyrvubinkzrncnvb'
+ 
+mail.init_app(app)
 
-
-title = ''
+# title = ''
 # converted_price = scraper.converted_price
 @app.route('/')
 @app.route('/index')
 def index():
     return render_template("index.html")
     
-# @app.route('/contacts', methods = ['GET','POST'])    
-# def contacts():
-#     if request.method == "GET":
-#         return "Please fill out the contacts section"
-#     else:
-#         return "Thanks for filling out the form! You will be helped shortly."
-        
+@app.route('/contacts', methods = ['GET','POST'])    
+def contacts():
+    form = ContactForm()
+    if request.method == 'POST':
+        if form.validate() == False:
+            flash('One or more fields is either blank or filled out incorrectly. Please try again')
+            return render_template('contacts.html', form=form)
+        else:
+            msg = Message(form.subject.data, sender='textbookproapp@gmail.com', recipients=['farhan.mashud.174@gmail.com','haiyingman8@gmail.com','textbookproapp@gmail.com'])
+            msg.body = """
+            From: %s <%s>
+            %s
+            """ % (form.name.data, form.email.data, form.message.data)
+            mail.send(msg)
+            return 'Form posted.'
+ 
+    elif request.method == 'GET':
+        return render_template('contacts.html', form=form)
     
     # print(title)
     # print(converted_price)

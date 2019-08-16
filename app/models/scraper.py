@@ -3,18 +3,20 @@ from bs4 import BeautifulSoup
 import smtplib
 from flask import Flask, escape, request 
 
+
 # title = "" 
 # price = ""
 # converted_price = 0
 
 app = Flask("Textbook Pro by HaiFar")
+# app.secret_key = 'textbook pro submission only HaiFar'
 
 def send_mail(email):
     server = smtplib.SMTP('smtp.gmail.com', 587)
     server.ehlo()
     server.starttls()
     server.ehlo()
-    server.login('farhan.mashud.174@gmail.com', 'tcvwxvbphbqktvue')
+    server.login('textbookproapp@gmail.com', 'xyrvubinkzrncnvb')
     
     subject = "Price fell down!"
     body = "Check the ebay link  "
@@ -22,7 +24,7 @@ def send_mail(email):
     msg = "Subject: {}\n\n{}".format(subject, body)
     
     server.sendmail(
-        'farhan.mashud.174@gmail.com',
+        'textbookproapp@gmail.com',
         email,
         msg
     )
