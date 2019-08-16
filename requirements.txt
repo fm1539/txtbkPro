@@ -3,3 +3,4 @@ gunicorn==19.9.0
 bs4 == 0.0.1
 requests==2.22.0
 Flask-Mail == 0.9.1
+Flask-wtf == 0.14.2
